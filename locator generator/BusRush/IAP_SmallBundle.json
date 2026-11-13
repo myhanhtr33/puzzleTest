@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 2,
+  "name": "IAP_SmallBundle",
+  "root": "small_bundle",
+  "objects": [
+    {
+      "testId": "small_bundle",
+      "base": null,
+      "path": {
+        "mode": "name_chain",
+        "names": [
+          "UIPack_SmallBundle"
+        ]
+      },
+      "exist": true,
+      "checks": [],
+      "cardinality": "unique"
+    },
+    {
+      "testId": "background",
+      "base": "small_bundle",
+      "path": {
+        "mode": "same",
+        "names": []
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "expected": "Shop_Rare_pack_bg"
+        }
+      ],
+      "cardinality": "unique"
+    },
+    {
+      "testId": "name",
+      "base": "small_bundle",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "T_NamePack"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "text",
+          "format": "literal",
+          "expected": "Car Bundle"
+        }
+      ],
+      "cardinality": "unique"
+    },
+    {
+      "testId": "tag",
+      "base": "small_bundle",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "I_Tag"
+        ]
+      },
+      "exist": false,
+      "checks": [],
+      "cardinality": "unique"
+    },
+    {
+      "testId": "reward_list",
+      "base": "small_bundle",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "GameObject"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "child_count",
+          "expected": "3"
+        }
+      ],
+      "cardinality": "unique"
+    },
+    {
+      "testId": "button_buy",
+      "base": "small_bundle",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "Button"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "clickable",
+          "expected": true
+        },
+        {
+          "type": "component_exists",
+          "component": "Image",
+          "expected": false
+        },
+        {
+          "type": "component_exists",
+          "component": "Button",
+          "expected": true
+        },
+        {
+          "type": "texture",
+          "expected": "UI_Button_Outside"
+        },
+        {
+          "type": "text",
+          "format": "price",
+          "target": {
+            "type": "offspring",
+            "names": [
+              "T_Price"
+            ]
+          },
+          "amount": "9.99",
+          "currencies": [
+            "$"
+          ],
+          "currency_position": "suffix"
+        }
+      ],
+      "cardinality": "unique",
+      "contractType": "button",
+      "buttonType": "buy",
+      "productId": "bus_flow_inapp_8",
+      "price": "9.99$",
+      "grants": [
+        "gold",
+        "booster_sort",
+        "booster_shuffle",
+        "booster_vip",
+        "booster_slot",
+        "unlimited_live"
+      ]
+    },
+    {
+      "testId": "gold",
+      "base": "reward_list",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "UIRewardGold"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "target": {
+            "type": "offspring",
+            "names": [
+              "I_Gold"
+            ]
+          },
+          "expected": "Falcon_Gold_2"
+        },
+        {
+          "type": "text",
+          "format": "gold_amount",
+          "amount": 5000,
+          "target": {
+            "type": "offspring",
+            "names": [
+              "T_AmountGold"
+            ]
+          }
+        }
+      ],
+      "cardinality": "unique",
+      "contractType": "reward",
+      "rewardId": "gold",
+      "amount": 5000,
+      "amountUnit": "count"
+    },
+    {
+      "testId": "lives_box",
+      "base": "reward_list",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "G_Box_Live"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "expected": "Shop_Pack_Panel_bg"
+        }
+      ],
+      "cardinality": "unique"
+    },
+    {
+      "testId": "reward_box",
+      "base": "reward_list",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "Grid_Reward"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "expected": "Shop_Pack_Panel_bg"
+        },
+        {
+          "type": "child_count",
+          "expected": "5"
+        }
+      ],
+      "cardinality": "unique"
+    },
+    {
+      "testId": "lives",
+      "base": "lives_box",
+      "path": {
+        "mode": "same",
+        "names": []
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "target": {
+            "type": "offspring",
+            "names": [
+              "I_Icon"
+            ]
+          },
+          "expected": "Icon_Reward_UnlimitedLive"
+        },
+        {
+          "type": "text",
+          "format": "life_duration",
+          "seconds": 3600,
+          "target": {
+            "type": "offspring",
+            "names": [
+              "T_Amount"
+            ]
+          }
+        }
+      ],
+      "cardinality": "unique",
+      "contractType": "reward",
+      "rewardId": "unlimited_live",
+      "amount": 3600,
+      "amountUnit": "seconds"
+    },
+    {
+      "testId": "booster_sort",
+      "base": "reward_box",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "Sort"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "target": {
+            "type": "offspring",
+            "names": [
+              "I_Icon"
+            ]
+          },
+          "expected": "booster_sort"
+        },
+        {
+          "type": "texture_image_match",
+          "image": "F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_sort.png"
+        }
+      ],
+      "cardinality": "unique",
+      "contractType": "reward",
+      "rewardId": "booster_sort",
+      "amount": 1,
+      "amountUnit": "count",
+      "amountTextRef": "booster_amount"
+    },
+    {
+      "testId": "booster_shuffle",
+      "base": "reward_box",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "Shuffle"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "target": {
+            "type": "offspring",
+            "names": [
+              "I_Icon"
+            ]
+          },
+          "expected": "booster_shuffle"
+        },
+        {
+          "type": "texture_image_match",
+          "image": "F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_shuffle.png"
+        }
+      ],
+      "cardinality": "unique",
+      "contractType": "reward",
+      "rewardId": "booster_shuffle",
+      "amount": 1,
+      "amountUnit": "count",
+      "amountTextRef": "booster_amount"
+    },
+    {
+      "testId": "booster_vip",
+      "base": "reward_box",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "VIP"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "target": {
+            "type": "offspring",
+            "names": [
+              "I_Icon"
+            ]
+          },
+          "expected": "booster_vip"
+        },
+        {
+          "type": "texture_image_match",
+          "image": "F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_vip.png"
+        }
+      ],
+      "cardinality": "unique",
+      "contractType": "reward",
+      "rewardId": "booster_vip",
+      "amount": 1,
+      "amountUnit": "count",
+      "amountTextRef": "booster_amount"
+    },
+    {
+      "testId": "booster_slot",
+      "base": "reward_box",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "Slot"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "texture",
+          "target": {
+            "type": "offspring",
+            "names": [
+              "I_Icon"
+            ]
+          },
+          "expected": "booster_slot"
+        },
+        {
+          "type": "texture_image_match",
+          "image": "F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_slot.png"
+        }
+      ],
+      "cardinality": "unique",
+      "contractType": "reward",
+      "rewardId": "booster_slot",
+      "amount": 1,
+      "amountUnit": "count",
+      "amountTextRef": "booster_amount"
+    },
+    {
+      "testId": "booster_amount",
+      "base": "reward_box",
+      "path": {
+        "mode": "offspring",
+        "names": [
+          "T_BoosterAmount"
+        ]
+      },
+      "exist": true,
+      "checks": [
+        {
+          "type": "text",
+          "format": "booster_amount",
+          "amount": 1
+        }
+      ],
+      "cardinality": "unique"
+    }
+  ]
+}

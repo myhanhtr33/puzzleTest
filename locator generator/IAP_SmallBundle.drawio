@@ -1,0 +1,141 @@
+<mxfile host="drawio-plugin" modified="2026-10-26T10:14:47.997Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" etag="Ska7-4sKIwX31vr6QWPj" version="22.1.22" type="embed">
+  <diagram name="IAP Small Bundle" id="iap-small-bundle-contract">
+    <mxGraphModel dx="395" dy="307" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1350" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="IAP Bundle Small | Executable UI Contract" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="Strict metadata: testId, base, pathMode, path, exist, checks, cardinality. Edges show scope only; base controls resolution." style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;fontSize=12;align=left;" parent="1" vertex="1">
+          <mxGeometry x="40" y="65" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <object label="&lt;b&gt;Strict metadata convention&lt;/b&gt;&lt;br&gt;testId: stable manifest ID&lt;br&gt;base: scope object ID&lt;br&gt;pathMode: name_chain | offspring | same&lt;br&gt;path: selector value&lt;br&gt;exist: true | false&lt;br&gt;checks: JSON assertion array" metadataRole="legend" testIgnore="true" id="legend">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3f4f6;strokeColor=#9ca3af;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="40" y="110" width="380" height="190" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="resolver_rules" value="&lt;b&gt;Resolver rules&lt;/b&gt;&lt;br&gt;name_chain: poco(root).offspring(children...)&lt;br&gt;offspring: resolve from base object&lt;br&gt;same: reuse base object&lt;br&gt;leading slash is display syntax only&lt;br&gt;checks keep target paths separate from object paths" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9e6;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+          <mxGeometry x="1780" y="110" width="380" height="190" as="geometry" />
+        </mxCell>
+        <object label="&lt;b&gt;Pack root — Small Bundle&lt;/b&gt;&lt;br&gt;testId: small_bundle&lt;br&gt;base: (root)&lt;br&gt;pathMode: name_chain&lt;br&gt;path: [UIPack_SmallBundle]&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;checks: none" metadataRole="ui_object" testId="small_bundle" base="" pathMode="name_chain" path="[&quot;UIPack_SmallBundle&quot;]" exist="true" checks="[]" cardinality="unique" id="obj_small_bundle">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="880" y="110" width="420" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;background&lt;/b&gt;&lt;br&gt;testId: background&lt;br&gt;base: small_bundle&lt;br&gt;pathMode: same | path: (base object)&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;checks: texture = Shop_normal_pack_bg" metadataRole="ui_object" testId="background" base="small_bundle" pathMode="same" path="parent" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;expected&quot;:&quot;Shop_Rare_pack_bg&quot;}]" cardinality="unique" id="obj_background">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f4f8;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="40" y="360" width="300" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;name&lt;/b&gt;&lt;br&gt;testId: name&lt;br&gt;base: small_bundle&lt;br&gt;pathMode: offspring&lt;br&gt;path: /T_NamePack&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;checks: text.literal @ self = Car Bundle" metadataRole="ui_object" testId="name" base="small_bundle" pathMode="offspring" path="/T_NamePack" exist="true" checks="[{&quot;type&quot;:&quot;text&quot;,&quot;format&quot;:&quot;literal&quot;,&quot;expected&quot;:&quot;Car Bundle&quot;}]" cardinality="unique" id="obj_name">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f4f8;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="370" y="360" width="300" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;tag (assert absent)&lt;/b&gt;&lt;br&gt;testId: tag&lt;br&gt;base: small_bundle&lt;br&gt;pathMode: offspring&lt;br&gt;path: /I_Tag&lt;br&gt;exist: false | cardinality: unique&lt;br&gt;checks: none" metadataRole="ui_object" testId="tag" base="small_bundle" pathMode="offspring" path="/I_Tag" exist="false" checks="[]" cardinality="unique" id="obj_tag">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="700" y="360" width="300" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;Reward list&lt;/b&gt;&lt;br&gt;testId: reward_list&lt;br&gt;base: small_bundle&lt;br&gt;pathMode: offspring&lt;br&gt;path: /GameObject&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;checks: child_count = 3 (direct children)" metadataRole="ui_object" testId="reward_list" base="small_bundle" pathMode="offspring" path="/GameObject" exist="true" checks="[]" cardinality="unique" childCount="3" id="obj_reward_list">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#66bb6a;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="1040" y="370" width="300" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;BUY BUTTON — contractType: button | buttonType: buy&lt;/b&gt;&lt;br&gt;testId: button_buy&lt;br&gt;base: small_bundle | pathMode: offspring | path: /Button&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;productId: bus_flow_inapp_8 | price metadata: 7.99$&lt;br&gt;grants rewardId: gold, booster_sort, booster_shuffle, booster_vip, booster_slot, unlimited_live&lt;br&gt;checks:&lt;br&gt;• clickable = true&lt;br&gt;• component Image exists = true&lt;br&gt;• component Button exists = true&lt;br&gt;• texture = Shop_ButtonBuy&lt;br&gt;• text.price @ /T_Price: amount 7.99, currency [$], position suffix" metadataRole="ui_object" testId="button_buy" contractType="button" buttonType="buy" productId="bus_flow_inapp_8" price="9.99$" grants="[&quot;gold&quot;,&quot;booster_sort&quot;,&quot;booster_shuffle&quot;,&quot;booster_vip&quot;,&quot;booster_slot&quot;,&quot;unlimited_live&quot;]" base="small_bundle" pathMode="offspring" path="/Button" exist="true" checks="[{&quot;type&quot;:&quot;clickable&quot;,&quot;expected&quot;:true},{&quot;type&quot;:&quot;component_exists&quot;,&quot;component&quot;:&quot;Image&quot;,&quot;expected&quot;:false},{&quot;type&quot;:&quot;component_exists&quot;,&quot;component&quot;:&quot;Button&quot;,&quot;expected&quot;:true},{&quot;type&quot;:&quot;texture&quot;,&quot;expected&quot;:&quot;UI_Button_Outside&quot;},{&quot;type&quot;:&quot;text&quot;,&quot;format&quot;:&quot;price&quot;,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;T_Price&quot;]},&quot;amount&quot;:&quot;9.99&quot;,&quot;currencies&quot;:[&quot;$&quot;],&quot;currency_position&quot;:&quot;suffix&quot;}]" cardinality="unique" id="obj_button_buy">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0e6;strokeColor=#ef6c00;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="1360" y="360" width="650" height="330" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;REWARD — Gold | contractType: reward&lt;/b&gt;&lt;br&gt;testId: gold | rewardId: gold&lt;br&gt;base: reward_list | pathMode: offspring | path: /UIRewardGold&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;grant expected: 5000 count&lt;br&gt;checks:&lt;br&gt;• texture @ /I_Gold = Falcon_Gold_2&lt;br&gt;• text.gold_amount @ /T_AmountGold = 5000" metadataRole="ui_object" testId="gold" contractType="reward" rewardId="gold" amount="5000" amountUnit="count" base="reward_list" pathMode="offspring" path="/UIRewardGold" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;I_Gold&quot;]},&quot;expected&quot;:&quot;Falcon_Gold_2&quot;},{&quot;type&quot;:&quot;text&quot;,&quot;format&quot;:&quot;gold_amount&quot;,&quot;amount&quot;:5000,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;T_AmountGold&quot;]}}]" cardinality="unique" id="obj_gold">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9e6;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="40" y="640" width="360" height="280" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;Lives box&lt;/b&gt;&lt;br&gt;testId: lives_box&lt;br&gt;base: reward_list | pathMode: offspring | path: /G_Box_Live&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;checks: texture = Shop_Pack_Panel_bg" metadataRole="ui_object" testId="lives_box" base="reward_list" pathMode="offspring" path="/G_Box_Live" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;expected&quot;:&quot;Shop_Pack_Panel_bg&quot;}]" cardinality="unique" id="obj_lives_box">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f4f8;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="450" y="640" width="340" height="220" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;Reward box&lt;/b&gt;&lt;br&gt;testId: reward_box&lt;br&gt;base: reward_list | pathMode: offspring | path: /Grid_Reward&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;checks: texture = Shop_Pack_Panel_bg&lt;br&gt;child_count = 5 (direct children)" metadataRole="ui_object" testId="reward_box" base="reward_list" pathMode="offspring" path="/Grid_Reward" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;expected&quot;:&quot;Shop_Pack_Panel_bg&quot;}]" cardinality="unique" childCount="5" id="obj_reward_box">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#66bb6a;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="822" y="640" width="340" height="240" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;REWARD — Unlimited lives | contractType: reward&lt;/b&gt;&lt;br&gt;testId: lives | rewardId: unlimited_live&lt;br&gt;base: lives_box | pathMode: same | path: (base object)&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;grant expected: 3600 seconds&lt;br&gt;checks:&lt;br&gt;• texture @ /I_Icon = Icon_Reward_UnlimitedLive&lt;br&gt;• text.life_duration @ /T_Amount: 3600 seconds" metadataRole="ui_object" testId="lives" contractType="reward" rewardId="unlimited_live" amount="3600" amountUnit="seconds" base="lives_box" pathMode="same" path="parent" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;I_Icon&quot;]},&quot;expected&quot;:&quot;Icon_Reward_UnlimitedLive&quot;},{&quot;type&quot;:&quot;text&quot;,&quot;format&quot;:&quot;life_duration&quot;,&quot;seconds&quot;:3600,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;T_Amount&quot;]}}]" cardinality="unique" id="obj_lives">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="440" y="900" width="360" height="260" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;REWARD — Booster Sort | contractType: reward&lt;/b&gt;&lt;br&gt;testId: booster_sort | rewardId: booster_sort&lt;br&gt;base: reward_box | pathMode: offspring | path: /Sort&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;grant: 1 count | amountTextRef: booster_amount&lt;br&gt;checks:&lt;br&gt;• texture @ /I_Icon = booster_sort&lt;br&gt;• image match = booster_sort.png" metadataRole="ui_object" testId="booster_sort" contractType="reward" rewardId="booster_sort" amount="1" amountUnit="count" amountTextRef="booster_amount" base="reward_box" pathMode="offspring" path="/Sort" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;I_Icon&quot;]},&quot;expected&quot;:&quot;booster_sort&quot;},{&quot;type&quot;:&quot;texture_image_match&quot;,&quot;image&quot;:&quot;F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_sort.png&quot;}]" cardinality="unique" id="obj_booster_sort">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0e6;strokeColor=#ef6c00;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="840" y="900" width="340" height="260" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;REWARD — Booster Shuffle | contractType: reward&lt;/b&gt;&lt;br&gt;testId: booster_shuffle | rewardId: booster_shuffle&lt;br&gt;base: reward_box | pathMode: offspring | path: /Shuffle&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;grant: 1 count | amountTextRef: booster_amount&lt;br&gt;checks:&lt;br&gt;• texture @ /I_Icon = booster_shuffle&lt;br&gt;• image match = booster_shuffle.png" metadataRole="ui_object" testId="booster_shuffle" contractType="reward" rewardId="booster_shuffle" amount="1" amountUnit="count" amountTextRef="booster_amount" base="reward_box" pathMode="offspring" path="/Shuffle" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;I_Icon&quot;]},&quot;expected&quot;:&quot;booster_shuffle&quot;},{&quot;type&quot;:&quot;texture_image_match&quot;,&quot;image&quot;:&quot;F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_shuffle.png&quot;}]" cardinality="unique" id="obj_booster_shuffle">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f4f8;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="1200" y="900" width="360" height="260" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;REWARD — Booster VIP | contractType: reward&lt;/b&gt;&lt;br&gt;testId: booster_vip | rewardId: booster_vip&lt;br&gt;base: reward_box | pathMode: offspring | path: /VIP&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;grant: 1 count | amountTextRef: booster_amount&lt;br&gt;checks:&lt;br&gt;• texture @ /I_Icon = booster_vip&lt;br&gt;• image match = booster_vip.png" metadataRole="ui_object" testId="booster_vip" contractType="reward" rewardId="booster_vip" amount="1" amountUnit="count" amountTextRef="booster_amount" base="reward_box" pathMode="offspring" path="/VIP" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;I_Icon&quot;]},&quot;expected&quot;:&quot;booster_vip&quot;},{&quot;type&quot;:&quot;texture_image_match&quot;,&quot;image&quot;:&quot;F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_vip.png&quot;}]" cardinality="unique" id="obj_booster_vip">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9e6;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="1600" y="900" width="340" height="260" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;REWARD — Booster Slot | contractType: reward&lt;/b&gt;&lt;br&gt;testId: booster_slot | rewardId: booster_slot&lt;br&gt;base: reward_box | pathMode: offspring | path: /Slot&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;grant: 1 count | amountTextRef: booster_amount&lt;br&gt;checks:&lt;br&gt;• texture @ /I_Icon = booster_slot&lt;br&gt;• image match = booster_slot.png" metadataRole="ui_object" testId="booster_slot" contractType="reward" rewardId="booster_slot" amount="1" amountUnit="count" amountTextRef="booster_amount" base="reward_box" pathMode="offspring" path="/Slot" exist="true" checks="[{&quot;type&quot;:&quot;texture&quot;,&quot;target&quot;:{&quot;type&quot;:&quot;offspring&quot;,&quot;names&quot;:[&quot;I_Icon&quot;]},&quot;expected&quot;:&quot;booster_slot&quot;},{&quot;type&quot;:&quot;texture_image_match&quot;,&quot;image&quot;:&quot;F:/BusRush/Assets/_Game/Shared/Sprites/Reward/booster_slot.png&quot;}]" cardinality="unique" id="obj_booster_slot">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9e6;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="1960" y="900" width="340" height="260" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;Shared booster amount text&lt;/b&gt;&lt;br&gt;testId: booster_amount&lt;br&gt;base: reward_box | pathMode: offspring | path: /T_BoosterAmount&lt;br&gt;exist: true | cardinality: unique&lt;br&gt;checks: text.booster_amount @ self = 1" metadataRole="ui_object" testId="booster_amount" base="reward_box" pathMode="offspring" path="/T_BoosterAmount" exist="true" checks="[{&quot;type&quot;:&quot;text&quot;,&quot;format&quot;:&quot;booster_amount&quot;,&quot;amount&quot;:1}]" cardinality="unique" id="obj_booster_amount">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;spacingRight=10;" parent="1" vertex="1">
+            <mxGeometry x="1960" y="1200" width="380" height="190" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="edge_root_background" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_small_bundle" target="obj_background" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_root_name" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_small_bundle" target="obj_name" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_root_tag" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_small_bundle" target="obj_tag" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_root_rewards" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_small_bundle" target="obj_reward_list" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_root_button" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_small_bundle" target="obj_button_buy" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rewards_gold" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_list" target="obj_gold" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rewards_lives" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_list" target="obj_lives_box" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_rewards_box" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_list" target="obj_reward_box" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_lives" value="same scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_lives_box" target="obj_lives" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_box_sort" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_box" target="obj_booster_sort" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_box_shuffle" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_box" target="obj_booster_shuffle" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_box_vip" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_box" target="obj_booster_vip" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_box_slot" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_box" target="obj_booster_slot" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_box_amount" value="scope" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endFill=1;" parent="1" source="obj_reward_box" target="obj_booster_amount" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
